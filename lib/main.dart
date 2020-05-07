@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/screens/categories_screen.dart';
+import 'package:recipe/screens/settings_screen.dart';
+import 'package:recipe/screens/tabs_screen.dart';
 import 'package:recipe/screens/category_meals_screen.dart';
 import "package:recipe/utils/app_routes.dart";
 import 'package:recipe/screens/meal_details_screen.dart';
@@ -20,13 +21,14 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light().textTheme.copyWith(
               title: TextStyle(fontSize: 20, fontFamily: 'RobotoCondensed'))),
       routes: {
-        AppRoutes.HOME: (_) => CategorieScreen(),
+        AppRoutes.HOME: (_) => TabsScreen(),
         AppRoutes.CATEGORIE_MEALS: (_) => CategorieMealsScreen(),
         AppRoutes.MEAL_DETAIL: (_) => MealDetail(),
+        AppRoutes.SETTINGS: (_) => SettingsScreen(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(          
-          builder: (_) => CategorieScreen(),
+          builder: (_) => TabsScreen(),
         );
       },
     );
