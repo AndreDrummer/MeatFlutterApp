@@ -2,10 +2,16 @@ import "package:flutter/material.dart";
 import 'package:recipe/models/meal.dart';
 
 class MealDetail extends StatelessWidget {
+
+  final void Function(Meal) toggleFavorite;
+  final bool Function(Meal) isFavorite;
+
+  MealDetail(this.toggleFavorite, this.isFavorite);
+
   Widget _generateTitle(BuildContext context, String title) {
     return Container(
         margin: const EdgeInsets.all(10),
-        child: Text(title, style: Theme.of(context).textTheme.title));
+        child: Text(title, style: Theme.of(context).textTheme.headline6));
   }
 
   Widget _generateListView(context, child) {
@@ -87,6 +93,12 @@ class MealDetail extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          toggleFavorite(meal);
+        },        
+        child: Icon(isFavorite(meal) ? Icons.star : Icons.star_border),
       ),
     );
   }
